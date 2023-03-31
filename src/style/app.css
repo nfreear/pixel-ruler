@@ -1,0 +1,71 @@
+
+.rg-overlay {
+  min-height: 1200px;
+}
+
+.rg-overlay .ruler {
+  background-color: rgba(210,210,210, .6);
+}
+
+body .rg-overlay,
+.X-rg-overlay .ruler.h,
+.X-rg-overlay .ruler.v,
+output {
+  position: absolute;
+  left: .5rem;
+  top: 60px;
+}
+
+.rg-overlay .ruler.h,
+.rg-overlay .ruler.v {
+  left: var(--xx);
+  top: var(--yy);
+}
+
+#meta,
+body .menu-btn {
+  display: none;
+}
+
+.X-wrapper {
+  position: absolute;
+  left: .5rem;
+  X-z-index: 999999;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+select {
+  padding: .3rem .6rem;
+  margin-right: .5rem;
+}
+
+output {
+  outline: 2px solid red;
+}
+
+output .placeholder {
+  margin: 4rem;
+}
+
+output img {
+  aspect-ratio: var(--img-width) / var(--img-height);
+  height: var(--dev-height);
+  width: auto; /* var(--dev-width); */
+}
+
+p {
+  padding: 0 .5rem;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: .95rem;
+}
+
+/* End. */
