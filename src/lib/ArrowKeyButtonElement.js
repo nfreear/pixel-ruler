@@ -71,7 +71,7 @@ export class ArrowButtonKeyElement extends AppElement {
   /** Prevent the browser window scrolling - when focussed on this button.
    */
   _keyDownHandler (ev) {
-    if ([37,38,39,40].indexOf(ev.keyCode) > -1) {
+    if ([37, 38, 39, 40].indexOf(ev.keyCode) > -1) {
       ev.preventDefault();
       // Accessibility: do everything else on "keyup"!
     }

@@ -19,11 +19,11 @@ export class AppElement extends MyElement {
     output.appendChild(imgElement);
   }
 
-  _setImageSize(ev, IMG) {
+  _setImageSize (ev, IMG) {
     console.debug('Load - image size:', ev);
-    console.debug("natural:", IMG.naturalWidth, IMG.naturalHeight);
-    console.debug("width,height:", IMG.width, IMG.height);
-    console.debug("offsetW,offsetH:", IMG.offsetWidth, IMG.offsetHeight);
+    console.debug('natural:', IMG.naturalWidth, IMG.naturalHeight);
+    console.debug('width,height:', IMG.width, IMG.height);
+    console.debug('offsetW,offsetH:', IMG.offsetWidth, IMG.offsetHeight);
 
     /* EXIF.enableXmp();
     EXIF.getData(IMG, function() {

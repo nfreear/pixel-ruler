@@ -7,7 +7,7 @@
 import AppElement from './AppElement.js';
 // import MyElement from 'https://nfreear.github.io/elements/src/MyElement.js';
 
-const DEVICE_RE = /(.+) [-—\/] (\d{3}) [x×] (\d{3})/;
+const DEVICE_RE = /(.+) [-—/] (\d{3}) [x×] (\d{3})/;
 const TEMPLATE = `
 <template>
   <label for="dev"><slot>Screen size</slot></label>

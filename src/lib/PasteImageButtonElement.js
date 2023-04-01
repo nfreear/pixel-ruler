@@ -34,17 +34,17 @@ export class PasteImageButtonElement extends AppElement {
 
     try {
       const permission = await navigator.permissions.query({
-        name: "clipboard-read",
+        name: 'clipboard-read'
       });
-      if (permission.state === "denied") {
-        throw new Error("Not allowed to read clipboard.");
+      if (permission.state === 'denied') {
+        throw new Error('Not allowed to read clipboard.');
       }
       const clipboardContents = await navigator.clipboard.read();
       for (const item of clipboardContents) {
-        if (!item.types.includes("image/png")) {
-          throw new Error("Clipboard contains non-image data.");
+        if (!item.types.includes('image/png')) {
+          throw new Error('Clipboard contains non-image data.');
         }
-        const blob = await item.getType("image/png");
+        const blob = await item.getType('image/png');
         const IMG = document.createElement('img');
         IMG.addEventListener('load', ev => this._setImageSize(ev, IMG));
 
