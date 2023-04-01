@@ -1,7 +1,6 @@
 /**
  * Widget to upload an image file.
  *
-
  * @author Nick Freear, 31-Mar-2023.
  */
 
@@ -9,8 +8,8 @@ import AppElement from './AppElement.js';
 
 const TEMPLATE = `
 <template>
-  <label for="file"><slot>Or, upload a screenshot</slot></label>
-  <input id="file" type="file" accept="image/jpeg, image/png, image/jpg">
+  <label for="file"><slot>Or upload a screenshot</slot></label>
+  <input id="file" part="input" type="file" accept="image/jpeg, image/png, image/jpg">
 </template>
 `;
 

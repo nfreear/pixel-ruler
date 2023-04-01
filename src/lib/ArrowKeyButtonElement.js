@@ -16,7 +16,7 @@ const HOWTO_TEXT = `Use the arrow keys to move the rulers — when focussed on t
 Try ALT + arrow key to move in bigger increments!`;
 const TEMPLATE = `
 <template>
-  <button part="button" aria-label="Use arrow keys">⤭</button>
+  <button part="button" aria-label="Move the ruler with the arrow keys">⤭</button>
 </template>
 `;
 

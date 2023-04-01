@@ -1,8 +1,4 @@
 
-.X.rg-overlay {
-  min-height: 1200px;
-}
-
 .rg-overlay .ruler {
   background-color: rgba(210,210,210, .6);
 }
@@ -11,7 +7,7 @@ body .rg-overlay,
 output {
   position: absolute;
   left: .5rem;
-  top: 60px;
+  top: 4rem;
 }
 
 /*! Dynamically position the ruler!
@@ -23,19 +19,11 @@ output {
 }
 
 button,
-input,
-arrow-key-button::part(button),
-paste-image-button::part(button),
-screen-size-selector::part(select) {
+::part(button),
+::part(input) {
   font: inherit;
-}
-
-button,
-arrow-key-button::part(button),
-paste-image-button::part(button),
-screen-size-selector::part(select) {
   padding: .3rem .6rem;
-  margin-right: .5rem;
+  margin-right: .4rem;
 }
 
 output {
@@ -60,9 +48,10 @@ output img {
   width: auto; /* var(--dev-width); */
 }
 
+i::after,
 sep::after {
   content: '·';
-  margin: 0 .6rem;
+  margin: 0 .3rem;
 }
 
 .js .no-js-message,
@@ -75,8 +64,10 @@ sup {
   font-weight: normal;
 }
 
-tt {
+tt,
+code {
   background: #eee;
+  color: #222;
   border: 1px solid #ccc;
   font-size: larger;
   padding: .1rem .2rem;
@@ -89,10 +80,24 @@ body {
   line-height: 1.1;
 }
 
-* {
+::part(a) {
+  font-size: smaller;
+}
+
+*,
+::part(a),
+::part(button),
+::part(input) {
   border-radius: .2rem;
-  outline-offset: .3rem;
+  outline-offset: .15rem;
   text-underline-offset: .25rem;
+}
+
+a:focus,
+a:hover,
+::part(a):focus,
+::part(a):hover {
+  text-decoration-thickness: 6px;
 }
 
 /* End. */
