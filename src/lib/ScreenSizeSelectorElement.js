@@ -5,7 +5,6 @@
  */
 
 import AppElement from './AppElement.js';
-// import MyElement from 'https://nfreear.github.io/elements/src/MyElement.js';
 
 const DEVICE_RE = /(.+) [-—/] (\d{3}) [x×] (\d{3})/;
 const TEMPLATE = `
@@ -19,6 +18,7 @@ const TEMPLATE = `
     <option>iPhone SE — 375 x 667</option>
     <option>iPhone XR — 414 x 896</option>
   </select>
+  <a href="#screen-size">help</a>
 </template>
 `;
 

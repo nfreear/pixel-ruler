@@ -8,29 +8,18 @@
 }
 
 body .rg-overlay,
-.X-rg-overlay .ruler.h,
-.X-rg-overlay .ruler.v,
 output {
   position: absolute;
   left: .5rem;
   top: 60px;
 }
 
+/*! Dynamically position the ruler!
+*/
 .rg-overlay .ruler.h,
 .rg-overlay .ruler.v {
   left: var(--xx);
   top: var(--yy);
-}
-
-#meta,
-body .menu-btn {
-  display: none;
-}
-
-.X-wrapper {
-  position: absolute;
-  left: .5rem;
-  X-z-index: 999999;
 }
 
 button,
@@ -50,13 +39,21 @@ screen-size-selector::part(select) {
 }
 
 output {
+  border-radius: .05rem;
   outline: 2px solid red;
+  outline-offset: 0;
 }
 
-output .placeholder {
+output > div {
+  line-height: 1.6;
   margin: 4rem;
+  max-width: 40rem;
+  position: relative;
+  z-index: 99;
 }
 
+/*! Ensure the image is correctly sized and scaled.
+ */
 output img {
   aspect-ratio: var(--img-width) / var(--img-height);
   height: var(--dev-height);
@@ -68,13 +65,34 @@ sep::after {
   margin: 0 .6rem;
 }
 
-.X.p {
-  padding: 0 .5rem;
+.js .no-js-message,
+[data-image-loaded] upload-image-button {
+  display: none;
+}
+
+sup {
+  font-style: italic;
+  font-weight: normal;
+}
+
+tt {
+  background: #eee;
+  border: 1px solid #ccc;
+  font-size: larger;
+  padding: .1rem .2rem;
 }
 
 body {
+  background-color: #fafafa;
+  color: #333;
   font-family: sans-serif;
-  font-size: .95rem;
+  line-height: 1.1;
+}
+
+* {
+  border-radius: .2rem;
+  outline-offset: .3rem;
+  text-underline-offset: .25rem;
 }
 
 /* End. */

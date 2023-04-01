@@ -5,8 +5,6 @@
  */
 
 import AppElement from './AppElement.js';
-// import MyElement from 'https://nfreear.github.io/elements/src/MyElement.js';
-// import { showImageSize } from './showImageSize.js';
 
 const TEMPLATE = `
 <template>
@@ -20,8 +18,6 @@ export class PasteImageButtonElement extends AppElement {
   }
 
   connectedCallback () {
-    this._output = document.querySelector('#image'); // 'output'
-
     this._attachLocalTemplate(TEMPLATE);
 
     const BUTTON = this.shadowRoot.querySelector('button');
@@ -46,15 +42,12 @@ export class PasteImageButtonElement extends AppElement {
         }
         const blob = await item.getType('image/png');
         const IMG = document.createElement('img');
-        IMG.addEventListener('load', ev => this._setImageSize(ev, IMG));
+        IMG.addEventListener('load', (ev) => this._setImageSize(ev, IMG));
 
         IMG.src = URL.createObjectURL(blob);
         IMG.alt = 'Pasted screenshot';
 
         this._appendImage(IMG);
-
-        // this._output.textContent = '';
-        // this._output.appendChild(EL);
 
         console.debug('Paste:', item, ev);
       }

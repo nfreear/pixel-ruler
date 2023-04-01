@@ -5,7 +5,6 @@
  */
 
 import AppElement from './AppElement.js';
-// import MyElement from 'https://nfreear.github.io/elements/src/MyElement.js';
 
 const { alert } = window;
 const keyMulti = 10;
@@ -41,26 +40,25 @@ export class ArrowButtonKeyElement extends AppElement {
   }
 
   _keyUpHandler (ev) {
+    const ROOT = this._root;
     const MATCH = ev.key.match(/Arrow(Up|Down|Left|Right)/);
+
     if (MATCH) {
       ev.preventDefault();
-      // ev.stopPropagation();
 
       const FAC = ev.altKey ? keyMulti : 1;
 
       const DIR = MATCH[1];
       const DELTA = { x: FAC * KX[DIR], y: FAC * KY[DIR] };
       const COORD = {
-        x: parseInt(this._ROOT.dataset.xx) + DELTA.x,
-        y: parseInt(this._ROOT.dataset.yy) + DELTA.y
+        x: parseInt(ROOT.dataset.xx) + DELTA.x,
+        y: parseInt(ROOT.dataset.yy) + DELTA.y
       };
-      this._root.dataset.xx = COORD.x;
-      this._root.dataset.yy = COORD.y;
+      ROOT.dataset.xx = COORD.x;
+      ROOT.dataset.yy = COORD.y;
 
-      this._root.style.setProperty('--xx', COORD.x + 'px');
-      this._root.style.setProperty('--yy', COORD.y + 'px');
-
-      // posEl.style = `--xx: ${COORD.x}px; --yy: ${COORD.y}px;`;
+      ROOT.style.setProperty('--xx', COORD.x + 'px');
+      ROOT.style.setProperty('--yy', COORD.y + 'px');
 
       console.debug('Arrow keyup:', COORD, DIR, ev.key, ev);
     } else {
@@ -68,7 +66,7 @@ export class ArrowButtonKeyElement extends AppElement {
     }
   }
 
-  /** Prevent the browser window scrolling - when focussed on this button.
+  /** Prevent the browser window scrolling - just when focussed on this button.
    */
   _keyDownHandler (ev) {
     if ([37, 38, 39, 40].indexOf(ev.keyCode) > -1) {

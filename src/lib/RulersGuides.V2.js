@@ -1,12 +1,15 @@
 /**
  * This Javascript package creates Photoshop-like guides and rulers interface on a web page.
  *
+ * This is a much cut-down and re-factored version of Mark's "RulersGuides.js".
+ *
  * @see https://github.com/mark-rolich/RulersGuides.js
+ * @see https://mark-rolich.github.io/RulersGuides.js/
+ * @see https://www.onlinerulerfree.com/pixel/
  * @author Mark Rolich <mark.rolich@gmail.com> (original)
  */
 
 import AppElement from './AppElement.js';
-// import MyElement from 'https://nfreear.github.io/elements/src/MyElement.js';
 
 class Ruler {
   constructor (type, size) {
@@ -20,7 +23,7 @@ class Ruler {
 
     ruler.classList.add('ruler'); // Was: .className = 'ruler ' + type + ' unselectable';
     ruler.classList.add(type);
-    ruler.classList.add('unselectable');
+    // Was: ruler.classList.add('unselectable');
 
     for (i; i < cnt; i = i + 1) {
       span = span.cloneNode(false);

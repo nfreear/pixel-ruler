@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Screenshot pixel-ruler</title>
+<title>(Screenshot) Pixel Ruler</title>
 
 <link rel="stylesheet" href="style/app.css">
 <link rel="stylesheet" href="style/rulersguides.css">
@@ -11,22 +11,53 @@
 <main class="wrapper">
   <p>
     <arrow-key-button></arrow-key-button>
-    <paste-image-button></paste-image-button>
-    <!-- <button id="paste-button">Paste an image</button> -->
 
-    or,
-    <label for="file">Upload a screenshot</label>
-    <input id="file" type="file" accept="image/jpeg, image/png, image/jpg">
+    <paste-image-button></paste-image-button>
+
+    <upload-image-button></upload-image-button>
+
+    <sep></sep>
+    <screen-size-selector></screen-size-selector>
 
     <sep></sep>
     <span id="dim">&hellip;</span>
-    <sep></sep>
-
-    <screen-size-selector></screen-size-selector>
   </p>
 
   <output id="image">
-    <p class="placeholder">(Image placeholder ...)</p>
+    <div>
+      <p class="no-js-message">
+        This website relies on Javascript. Sorry, you'll need an evergreen browser.
+      </p>
+      <div class="placeholder">
+        <h1> (Screenshot) Pixel Ruler<sup> alpha</sup> </h1>
+
+        <p>Paste or upload a screenshot from your mobile device, choose your screen-size, then use the ruler to measure the size of features.</p>
+
+        <p>Use the arrow keys to move the rulers — when focussed on the <tt>⤭</tt> button.</p>
+
+        <p>Try ALT + arrow key to move in bigger increments!</p>
+
+        <hr>
+        <h2 id="screen-size"> Can’t see your screen size? </h2>
+
+        <p>
+          If you can’t see your device and screen dimensions in the selector,
+          then <a href="https://codepen.io/nfreear/full/JjaqbVQ">visit this CodePen with your device</a>,
+          and let Nick know the device name and dimensions shown (ideally with a screenshot).
+          He’ll update the tool.
+        </p>
+
+        <hr>
+        <h2> About </h2>
+
+        <p>
+          This tool is being developed to test for the new Success Criterion
+          <a href="https://www.w3.org/TR/WCAG22/#target-size-minimum">2.5.8 Target Size (Minimum)</a>
+          in the <em>DRAFT</em> Web Content Accessibility Guidelines 2.2 standard.
+        </p>
+        <p> It is a work-in-progress! Feedback via <a href="https://github.com/nfreear/pixel-ruler">GitHub</a>.</p>
+      </div>
+    </div>
   </output>
 </main>
 
