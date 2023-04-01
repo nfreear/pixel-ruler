@@ -1,5 +1,5 @@
 
-.rg-overlay {
+.X.rg-overlay {
   min-height: 1200px;
 }
 
@@ -35,12 +35,16 @@ body .menu-btn {
 
 button,
 input,
-select {
+arrow-key-button::part(button),
+paste-image-button::part(button),
+screen-size-selector::part(select) {
   font: inherit;
 }
 
 button,
-select {
+arrow-key-button::part(button),
+paste-image-button::part(button),
+screen-size-selector::part(select) {
   padding: .3rem .6rem;
   margin-right: .5rem;
 }
@@ -59,7 +63,12 @@ output img {
   width: auto; /* var(--dev-width); */
 }
 
-p {
+sep::after {
+  content: '·';
+  margin: 0 .6rem;
+}
+
+.X.p {
   padding: 0 .5rem;
 }
 

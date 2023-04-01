@@ -1,48 +1,37 @@
-<!doctype html><html lang="en">
+<!doctype html><html lang="en" class="no-js">
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Screenshot pixel-ruler</title>
 
-<link href="style/app.css" rel="stylesheet">
+<link rel="stylesheet" href="style/app.css">
+<link rel="stylesheet" href="style/rulersguides.css">
 
 <main class="wrapper">
-  <p id="upload">
-    <button id="arrow-button" aria-label="Use arrow keys">⤭</button>
-    <button id="paste-button">Paste an image</button>
+  <p>
+    <arrow-key-button></arrow-key-button>
+    <paste-image-button></paste-image-button>
+    <!-- <button id="paste-button">Paste an image</button> -->
 
     or,
     <label for="file">Upload a screenshot</label>
     <input id="file" type="file" accept="image/jpeg, image/png, image/jpg">
 
-    &middot; <span id="dim">&hellip;</span> &middot;
+    <sep></sep>
+    <span id="dim">&hellip;</span>
+    <sep></sep>
 
-    <label for="dev">Screen size</label>
-    <select id="dev">
-      <option></option>
-      <option>Samsung A52 — 412 x 915</option>
-      <option>Samsung S22 Ultra — 385 x 824</option>
-      <option>Pixel 4a — 393 x 851</option>
-      <option>iPhone SE — 375 x 667</option>
-      <option>iPhone XR — 414 x 896</option>
-    </select>
+    <screen-size-selector></screen-size-selector>
   </p>
 
-  <output>
+  <output id="image">
     <p class="placeholder">(Image placeholder ...)</p>
   </output>
-
-  <!-- <hr> -->
-
-  <pre id="meta"></pre>
 </main>
 
-<!-- <script src="https://mark-rolich.github.io/RulersGuides.js/Event.js"></script>
-<script src="https://mark-rolich.github.io/RulersGuides.js/Dragdrop.js"></script> -->
-<script src="https://mark-rolich.github.io/RulersGuides.js/RulersGuides.js"></script>
+<rulers-guides-v2></rulers-guides-v2>
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/exif-js"></script> -->
 
 <script src="lib/app.js" type="module"></script>
 
