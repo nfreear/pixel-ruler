@@ -6,8 +6,15 @@
 body .rg-overlay,
 output {
   position: absolute;
-  left: .5rem;
-  top: 4rem;
+  left: .4rem;
+  top: 3.7rem;
+}
+
+@media screen and (max-width: 1050px){
+  body .rg-overlay,
+  output {
+    top: 7rem;
+  }
 }
 
 /*! Dynamically position the ruler!
@@ -22,8 +29,8 @@ button,
 ::part(button),
 ::part(input) {
   font: inherit;
-  padding: .3rem .6rem;
-  margin-right: .4rem;
+  padding: .37rem;
+  /* margin-right: .3rem; */
 }
 
 output {
@@ -35,7 +42,7 @@ output {
 output > div {
   line-height: 1.6;
   margin: 4rem;
-  max-width: 40rem;
+  max-width: 44rem;
   position: relative;
   z-index: 99;
 }
@@ -48,12 +55,13 @@ output img {
   width: auto; /* var(--dev-width); */
 }
 
-i::after,
-sep::after {
+.X.i::after,
+.X.sep::after {
   content: '·';
   margin: 0 .3rem;
 }
 
+nav > i,
 .js .no-js-message,
 [data-image-loaded] upload-image-button {
   display: none;
@@ -71,6 +79,14 @@ code {
   border: 1px solid #ccc;
   font-size: larger;
   padding: .1rem .2rem;
+}
+
+nav {
+  margin: .4rem 0;
+}
+
+nav > * {
+  margin-right: .25rem;
 }
 
 body {
@@ -98,6 +114,11 @@ a:hover,
 ::part(a):focus,
 ::part(a):hover {
   text-decoration-thickness: 6px;
+}
+
+screen-size-selector::part(input) {
+  /* max-width: 16rem; */
+  padding: .37rem .1rem;
 }
 
 /* End. */

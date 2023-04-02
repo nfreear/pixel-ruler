@@ -7,7 +7,7 @@
 import AppElement from './AppElement.js';
 
 const { alert } = window;
-const keyMulti = 10;
+const KEY_MULTI = 10;
 const KX = { Up: 0, Down: 0, Left: -1, Right: 1 };
 const KY = { Up: -1, Down: 1, Left: 0, Right: 0 };
 
@@ -23,6 +23,10 @@ const TEMPLATE = `
 export class ArrowButtonKeyElement extends AppElement {
   static getTag () {
     return 'arrow-key-button';
+  }
+
+  get keyMultiplier () {
+    return parseInt(this.getAttribute('key-multiplier')) || KEY_MULTI;
   }
 
   connectedCallback () {
@@ -46,7 +50,7 @@ export class ArrowButtonKeyElement extends AppElement {
     if (MATCH) {
       ev.preventDefault();
 
-      const FAC = ev.altKey ? keyMulti : 1;
+      const FAC = ev.altKey ? this.keyMultiplier : 1;
 
       const DIR = MATCH[1];
       const DELTA = { x: FAC * KX[DIR], y: FAC * KY[DIR] };

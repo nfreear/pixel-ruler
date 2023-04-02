@@ -8,7 +8,7 @@ import AppElement from './AppElement.js';
 
 const TEMPLATE = `
 <template>
-  <label for="file"><slot>Or upload a screenshot</slot></label>
+  <label for="file"><slot>Upload screenshot</slot></label>
   <input id="file" part="input" type="file" accept="image/jpeg, image/png, image/jpg">
 </template>
 `;

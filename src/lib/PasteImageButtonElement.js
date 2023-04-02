@@ -8,7 +8,7 @@ import AppElement from './AppElement.js';
 
 const TEMPLATE = `
 <template>
-  <button part="button"><slot>Paste an image</slot></button>
+  <button part="button"><slot>Paste image</slot></button>
 </template>
 `;
 
