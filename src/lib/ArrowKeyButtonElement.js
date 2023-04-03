@@ -7,7 +7,8 @@
 import AppElement from './AppElement.js';
 
 const { alert } = window;
-const KEY_MULTI = 10;
+const DEF_MOD_KEY = 'shiftKey';
+const DEF_KEY_MULTI = 10;
 const KX = { Up: 0, Down: 0, Left: -1, Right: 1 };
 const KY = { Up: -1, Down: 1, Left: 0, Right: 0 };
 
@@ -26,7 +27,14 @@ export class ArrowButtonKeyElement extends AppElement {
   }
 
   get keyMultiplier () {
-    return parseInt(this.getAttribute('key-multiplier')) || KEY_MULTI;
+    return parseInt(this.getAttribute('key-multiplier')) || DEF_KEY_MULTI;
+  }
+
+  get modifierKey () {
+    const key = this.getAttribute('modifier-key');
+    const MATCH = key ? key.match(/(alt|ctrl|meta|shift)/i) : null;
+    if (!MATCH) throw new Error(`Unexpected value for modifier key: ${key}`);
+    return MATCH ? `${MATCH[1].toLowerCase()}Key` : DEF_MOD_KEY;
   }
 
   connectedCallback () {
@@ -50,7 +58,7 @@ export class ArrowButtonKeyElement extends AppElement {
     if (MATCH) {
       ev.preventDefault();
 
-      const FAC = ev.altKey ? this.keyMultiplier : 1;
+      const FAC = ev[this.modifierKey] ? this.keyMultiplier : 1;
 
       const DIR = MATCH[1];
       const DELTA = { x: FAC * KX[DIR], y: FAC * KY[DIR] };
@@ -81,3 +89,5 @@ export class ArrowButtonKeyElement extends AppElement {
 }
 
 ArrowButtonKeyElement.define();
+
+export default ArrowButtonKeyElement;
