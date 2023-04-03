@@ -104,7 +104,7 @@ body {
 ::part(a),
 ::part(button),
 ::part(input) {
-  border-radius: .2rem;
+  /* border-radius: .2rem; */
   outline-offset: .15rem;
   text-underline-offset: .25rem;
 }

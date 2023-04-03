@@ -2,6 +2,12 @@
  * @see https://github.com/mark-rolich/RulersGuides.js
  */
 
+:root {
+    --rg-font-size: .72rem; /* Was: 9px */
+    --rg-hr-offset: -.7rem; /* Was: -7px */
+    --rg-vr-offset: -1.4rem; /* Was: -17px */
+}
+
 body {
     margin: 0;
     padding: 0 .4rem;
@@ -76,13 +82,14 @@ body {
 }
 
 .ruler .label {
-    font: 12px Arial;
+    font: 12px Arial, sans-serif;
     color: #000
 }
 
-.ruler,.ruler span {
+/* .ruler,
+.ruler span {
     font-size: 0
-}
+} */
 
 .ruler.h {
     width: 3000px;
@@ -131,7 +138,7 @@ body {
 
 .ruler.v span.label {
     border: 0;
-    font-size: 9px;
+    font-size: var(--rg-font-size, 9px);
     position: absolute;
     text-align: center;
     width: 9px
@@ -150,7 +157,7 @@ body {
 
 .ruler.h span.label {
     border: 0;
-    font-size: 9px;
+    font-size: var(--rg-font-size, 9px);
     position: absolute;
     text-align: center;
     top: -14px;
@@ -162,14 +169,16 @@ body {
 }
 
 .ruler.h .l100 {
-    left: -7px
+    left: var(--rg-hr-offset, -7px);
 }
 
 .ruler.h .l1000 {
     left: -10px
 }
 
-.ruler.v .l10,.ruler.v .l100,.ruler.v .l1000 {
+.ruler.v .l10,
+.ruler.v .l100,
+.ruler.v .l1000 {
     top: -7px
 }
 
@@ -178,7 +187,7 @@ body {
 }
 
 .ruler.v .l100 {
-    left: -17px
+    left: var(--rg-vr-offset, -17px);
 }
 
 .ruler.v .l1000 {
