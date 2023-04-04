@@ -1,26 +1,40 @@
 /**
+ * Styles for <rulers-guides-v2> custom element.
+ *
  * @see https://github.com/mark-rolich/RulersGuides.js
  */
 
 :root {
+    --rg-bg-color: rgba(210,210,210, .6);
+    --rg-line-color: #111;
+    --rg-text-color: #111;
     --rg-font-size: .72rem; /* Was: 9px */
     --rg-hr-offset: -.7rem; /* Was: -7px */
     --rg-vr-offset: -1.4rem; /* Was: -17px */
 }
 
-body {
+/* body {
     margin: 0;
     padding: 0 .4rem;
-}
+} */
 
 .rg-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: var(--rg-top, 0);
+    left: var(--rg-left, 0);
     overflow: hidden;
     min-height: 1100px;
     height: 100vh;
     width: 99vw;
+}
+
+/*! Dynamically position the rulers!
+*/
+.rg-overlay .ruler.h,
+.rg-overlay .ruler.v {
+  transform: translate(var(--xx), var(--yy));
+  /* left: var(--xx);
+  top: var(--yy); */
 }
 
 /* .guide {
@@ -74,7 +88,7 @@ body {
 }
 
 .ruler {
-    background-color: #ccc;
+    background-color: var(--rg-bg-color, #ccc);
     position: absolute;
     top: 0;
     left: 0;
@@ -83,7 +97,7 @@ body {
 
 .ruler .label {
     font: 12px Arial, sans-serif;
-    color: #000
+    color: var(--rg-text-color, #000);
 }
 
 /* .ruler,
@@ -95,7 +109,7 @@ body {
     width: 3000px;
     left: -1px;
     padding-top: 14px;
-    border-bottom: solid 1px #000
+    border-bottom: solid 1px var(--rg-line-color, #000);
 }
 
 .ruler.v {
@@ -103,7 +117,7 @@ body {
     top: -1px;
     padding-left: 16px;
     width: 25px;
-    border-right: solid 1px #000
+    border-right: solid 1px var(--rg-line-color, #000);
 }
 
 .ruler.h span {
@@ -126,13 +140,13 @@ body {
 }
 
 .ruler.v span.major {
-    border-top: solid 1px #000;
+    border-top: solid 1px var(--rg-line-color, #000);
     width: 13px
 }
 
 .ruler.v span.milestone {
     position: relative;
-    border-top: solid 1px #000;
+    border-top: solid 1px var(--rg-line-color, #000);
     width: 17px
 }
 
@@ -145,13 +159,13 @@ body {
 }
 
 .ruler.h span.major {
-    border-left: solid 1px #000;
+    border-left: solid 1px var(--rg-line-color, #000);
     height: 13px
 }
 
 .ruler.h span.milestone {
     position: relative;
-    border-left: solid 1px #000;
+    border-left: solid 1px var(--rg-line-color, #000);
     height: 17px
 }
 

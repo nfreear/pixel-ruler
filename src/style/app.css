@@ -1,35 +1,36 @@
 
-.rg-overlay .ruler {
-  background-color: rgba(210,210,210, .6);
+:root {
+  --rg-top: 3.6rem;
+  --rg-left: .4rem;
 }
 
-body .rg-overlay,
-output {
-  position: absolute;
-  left: .4rem;
-  top: 3.7rem;
-}
-
-@media screen and (max-width: 1050px){
-  body .rg-overlay,
-  output {
-    top: 7rem;
+@media screen and (max-width: 1050px) {
+  :root {
+    --rg-top: 7rem;
   }
 }
 
-/*! Dynamically position the ruler!
+/* body .rg-overlay, */
+output {
+  position: absolute;
+  left: var(--rg-left);
+  top: var(--rg-top);
+}
+
+/*! Was: Dynamically position the ruler!
 */
-.rg-overlay .ruler.h,
+/* .rg-overlay .ruler.h,
 .rg-overlay .ruler.v {
   left: var(--xx);
   top: var(--yy);
-}
+} */
 
 button,
 ::part(button),
 ::part(input) {
   font: inherit;
   padding: .37rem;
+  min-width: 1.85rem;
   /* margin-right: .3rem; */
 }
 
