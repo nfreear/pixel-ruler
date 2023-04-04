@@ -33,7 +33,7 @@ export class ArrowButtonKeyElement extends AppElement {
   get modifierKey () {
     const key = this.getAttribute('modifier-key');
     const MATCH = key ? key.match(/(alt|ctrl|meta|shift)/i) : null;
-    if (!MATCH) throw new Error(`Unexpected value for modifier key: ${key}`);
+    if (key && !MATCH) throw new Error(`Unexpected value for modifier key: ${key}`);
     return MATCH ? `${MATCH[1].toLowerCase()}Key` : DEF_MOD_KEY;
   }
 
@@ -49,6 +49,8 @@ export class ArrowButtonKeyElement extends AppElement {
     BUTTON.addEventListener('keyup', (ev) => this._keyUpHandler(ev));
     BUTTON.addEventListener('keydown', (ev) => this._keyDownHandler(ev), false);
     BUTTON.addEventListener('click', ev => alert(HOWTO_TEXT));
+
+    console.debug('arrow-key-button:', this.modifierKey, this.keyMultiplier, this);
   }
 
   _keyUpHandler (ev) {
