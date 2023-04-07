@@ -4,6 +4,7 @@
  * @see https://github.com/mark-rolich/RulersGuides.js
  */
 
+:host,
 :root {
     --rg-bg-color: rgba(210,210,210, .6);
     --rg-line-color: #111;

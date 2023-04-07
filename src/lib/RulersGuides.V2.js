@@ -11,6 +11,8 @@
 
 import AppElement from './AppElement.js';
 
+const STYLE_URL = 'style/rulersguides.css';
+
 class Ruler {
   constructor (type, size) {
     const ruler = document.createElement('div');
@@ -48,9 +50,9 @@ class Ruler {
           span.appendChild(label);
         }
 
-        span.classList.add('milestone'); // .className = 'milestone';
+        span.classList.add('milestone');
       } else if (i % 5 === 0) {
-        span.classList.add('major'); // .className = 'major';
+        span.classList.add('major');
       } else {
         span.className = '';
         span.removeAttribute('class');
@@ -78,7 +80,7 @@ export class RulersGuidesElement extends AppElement {
     const wrapper = document.createElement('div');
     // Was: gInfoBlockWrapper = wrapper.cloneNode(false);
 
-    wrapper.className = 'rg-overlay';
+    wrapper.classList.add('rg-overlay'); // Was: .className = 'rg-overlay';
     // gInfoBlockWrapper.className = 'info-block-wrapper';
 
     // wrapper.style.width = (size[0]) + 'px';
@@ -88,9 +90,19 @@ export class RulersGuidesElement extends AppElement {
     wrapper.appendChild(vRuler);
     // wrapper.appendChild(gInfoBlockWrapper);
 
-    this.appendChild(wrapper);
+    this.attachShadow({ mode: "open" });
 
-    console.debug('rulers-guides-v2');
+    this.shadowRoot.appendChild(this._styleSheet);
+    this.shadowRoot.appendChild(wrapper); // Was: this.appendChild(wrapper);
+
+    console.debug('rulers-guides-v2:', this);
+  }
+
+  get _styleSheet () {
+    const LINK = document.createElement('link');
+    LINK.rel = 'stylesheet';
+    LINK.href = STYLE_URL;
+    return LINK;
   }
 
   _getWindowSize () {
