@@ -2,6 +2,8 @@
  * A widget to select the device and screen size.
  *
  * @author Nick Freear, 31-Mar-2023.
+ *
+ * @see https://web.dev/more-capable-form-controls/
  */
 
 import AppElement from './AppElement.js';
@@ -24,8 +26,32 @@ const TEMPLATE = `
 `;
 
 export class ScreenSizeSelectorElement extends AppElement {
+  // Identify the element as a form-associated custom element
+  static get formAssociated () { return true; }
+
   static getTag () {
     return 'screen-size-selector';
+  }
+
+  constructor () {
+    super();
+    // Get access to the internal form control APIs
+    this._internals = this.attachInternals();
+    this._selectEl = null;
+  }
+
+  get type () { return this._selectEl ? this._selectEl.type : null; }
+
+  get value () { return this._selectEl ? this._selectEl.value : null; }
+
+  set value (val) {
+    if (this._selectEl) {
+      this._selectEl.value = val;
+      console.debug('Set value:', val);
+      this._inputHandler(this._mockInputEvent()); // this._selectEl;
+    } else {
+      throw new Error('Set value failed');
+    }
   }
 
   /** Device regular expression.
@@ -40,10 +66,13 @@ export class ScreenSizeSelectorElement extends AppElement {
     this._attachLocalTemplate(TEMPLATE);
 
     const selectElem = this.shadowRoot.querySelector('#dev');
+    this._selectEl = selectElem;
 
     this._sortedSizes.forEach((it) => selectElem.appendChild(this.option(it)));
 
     selectElem.addEventListener('input', ev => this._inputHandler(ev));
+
+    console.debug('screen-size-selector:', selectElem.type);
   }
 
   /** Copy, then sort alphabetically in place.
@@ -72,6 +101,14 @@ export class ScreenSizeSelectorElement extends AppElement {
     this._root.dataset.deviceName = deviceName;
     this._root.style.setProperty('--dev-width', WIDTH + 'px');
     this._root.style.setProperty('--dev-height', HEIGHT + 'px');
+
+    console.debug('screen-size - Input:', MATCHES, ev);
+
+    // No need to RE-dispatch the original event - it bubbles!
+  }
+
+  _mockInputEvent () {
+    return { type: 'input', target: this, mock: true }; // new Event('input', { target: });
   }
 }
 
