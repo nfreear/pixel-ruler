@@ -7,7 +7,7 @@
 
 Use the arrow keys to move the rulers — when focussed on the `⤭` button.
 
-Try ALT + arrow key to move in bigger increments!
+Try `Shift + arrow` key to move in bigger increments!
 
 ## Can’t see your screen size?
 
@@ -17,7 +17,9 @@ If you can’t see your device and screen dimensions in the selector, then [visi
 
 This tool is being developed to test for the new [Success Criterion 2.5.8 Target Size (Minimum)][tsm] in the _DRAFT_ Web Content Accessibility Guidelines 2.2 standard.
 
-It is a work-in-progress! Feedback welcome!
+It is a work-in-progress! [Feedback welcome][issues]!
+
+[Prototype CodePen][pen].
 
 [issues]: https://github.com/nfreear/pixel-ruler/issues
 [ghp]: https://nfreear.github.io/pixel-ruler

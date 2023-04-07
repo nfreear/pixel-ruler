@@ -6,11 +6,12 @@
 <title>(Screenshot) Pixel Ruler</title>
 
 <link rel="stylesheet" href="style/app.css">
-<link rel="stylesheet" href="style/rulersguides.css">
+<!-- <link rel="stylesheet" href="style/rulersguides.css"> -->
 
 <main class="wrapper">
   <nav aria-label="Controls">
     <arrow-key-button key-multiplier="10"></arrow-key-button>
+    <arrow-buttons hidden></arrow-buttons>
 
     <paste-image-button></paste-image-button>
 
@@ -18,6 +19,7 @@
 
     <i></i>
     <screen-size-selector></screen-size-selector>
+    <my-local-storage key="screenSize" selector="screen-size-selector"></my-local-storage>
 
     <i></i>
     <span id="dim">&hellip;</span>
@@ -35,7 +37,7 @@
 
         <p>Use the arrow keys to move the rulers — when focussed on the <code>⤭</code> button.</p>
 
-        <p>Try <code>ALT + arrow</code> key to move in bigger increments!</p>
+        <p>Try <code>Shift + arrow</code> key to move in bigger increments!</p>
 
         <hr>
         <h2 id="screen-size"> Can’t see your screen size? </h2>
@@ -63,6 +65,7 @@
 
 <rulers-guides-v2></rulers-guides-v2>
 
+<img src="https://ndf812.goatcounter.com/count?p=/pixel-ruler&t=Pixel%20Ruler" alt="">
 
 <script src="lib/app.js" type="module"></script>
 
