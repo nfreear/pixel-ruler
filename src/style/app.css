@@ -99,6 +99,7 @@ body {
 
 ::part(a) {
   font-size: smaller;
+  padding: .7rem 0;
 }
 
 *,
@@ -120,6 +121,26 @@ a:hover,
 screen-size-selector::part(input) {
   /* max-width: 16rem; */
   padding: .37rem .1rem;
+}
+
+[ data-use *= sqr- ] pixel-square {
+  position: absolute;
+  border: 1px solid red;
+  display: block;
+  height: 24px;
+  width: 24px;
+  left: calc(var(--rg-left) + 3rem);
+  top: calc(var(--rg-top) + 3rem);
+  transform: translate(var(--xx), var(--yy));
+}
+
+[ data-use = sqr-44p ] pixel-square {
+  height: 44px;
+  width: 44px;
+}
+
+[ data-experiment ] settings-dialog-button {
+  display: inline-block;
 }
 
 /* End. */

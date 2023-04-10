@@ -1,0 +1,31 @@
+
+.dialog-open-button,
+[ part *= dlgOpen ] {
+  padding: .4rem;
+  height: 2.3rem;
+  width: 2.3rem;
+
+  /* color: red; */
+}
+
+button svg {
+  display: inline-block;
+  height: 1.3rem;
+  width: 1.3rem;
+  vertical-align: -.2rem;
+}
+
+dialog {
+  border: 2px solid navy;
+  border-radius: .2rem;
+  max-width: 40rem;
+}
+
+dialog button {
+  font: inherit;
+  padding: .37rem 2rem;
+}
+
+fieldset {
+  margin: 2rem 0;
+}

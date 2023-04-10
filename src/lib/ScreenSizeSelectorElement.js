@@ -88,19 +88,22 @@ export class ScreenSizeSelectorElement extends AppElement {
   }
 
   _inputHandler (ev) {
-    const MATCHES = ev.target.value.match(this.deviceRE); // DEVICE_RE;
+    const VAL = ev.target.value; // || null;
+    const MATCHES = VAL ? VAL.match(this.deviceRE) : null; // DEVICE_RE;
 
     const deviceName = MATCHES ? MATCHES[1] : null;
     const WIDTH = MATCHES ? parseInt(MATCHES[2]) : null;
     const HEIGHT = MATCHES ? parseInt(MATCHES[3]) : null;
 
-    if (!deviceName || !WIDTH || !HEIGHT) {
-      throw new Error(`Device Regex failed: ${this.deviceRE} | ${JSON.stringify(MATCHES)}`);
+    if (VAL && (!deviceName || !WIDTH || !HEIGHT)) {
+      throw new Error(`Device Regex failed: ${this.deviceRE} | ${JSON.stringify(MATCHES)} "${VAL}"`);
     }
 
-    this._root.dataset.deviceName = deviceName;
-    this._root.style.setProperty('--dev-width', WIDTH + 'px');
-    this._root.style.setProperty('--dev-height', HEIGHT + 'px');
+    if (WIDTH) {
+      this._root.dataset.deviceName = deviceName;
+      this._root.style.setProperty('--dev-width', WIDTH + 'px');
+      this._root.style.setProperty('--dev-height', HEIGHT + 'px');
+    }
 
     console.debug('screen-size - Input:', MATCHES, ev);
 

@@ -1,8 +1,10 @@
 /**
  * Base HTML element class, with shared methods.
+ *
+ * @see 'https://nfreear.github.io/elements/src/MyElement.js
  */
 
-import MyElement from 'https://nfreear.github.io/elements/src/MyElement.js';
+import MyElement from '../../elements/src/MyElement.js';
 
 export class AppElement extends MyElement {
   get _root () {

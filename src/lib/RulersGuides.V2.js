@@ -90,7 +90,7 @@ export class RulersGuidesElement extends AppElement {
     wrapper.appendChild(vRuler);
     // wrapper.appendChild(gInfoBlockWrapper);
 
-    this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: 'open' });
 
     this.shadowRoot.appendChild(this._styleSheet);
     this.shadowRoot.appendChild(wrapper); // Was: this.appendChild(wrapper);

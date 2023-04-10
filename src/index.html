@@ -6,7 +6,7 @@
 <title>(Screenshot) Pixel Ruler</title>
 
 <link rel="stylesheet" href="style/app.css">
-<!-- <link rel="stylesheet" href="style/rulersguides.css"> -->
+<link rel="prefetch"   href="style/rulersguides.css">
 
 <main class="wrapper">
   <nav aria-label="Controls">
@@ -20,6 +20,8 @@
     <i></i>
     <screen-size-selector></screen-size-selector>
     <my-local-storage key="screenSize" selector="screen-size-selector"></my-local-storage>
+
+    <settings-dialog-button hidden></settings-dialog-button>
 
     <i></i>
     <span id="dim">&hellip;</span>
@@ -64,8 +66,9 @@
 </main>
 
 <rulers-guides-v2></rulers-guides-v2>
+<pixel-square></pixel-square>
 
-<img src="https://ndf812.goatcounter.com/count?p=/pixel-ruler&t=Pixel%20Ruler" alt="">
+<my-site-counter gcid="ndf812"></my-site-counter>
 
 <script src="lib/app.js" type="module"></script>
 
