@@ -131,7 +131,7 @@ screen-size-selector::part(input) {
   width: 24px;
   left: calc(var(--rg-left) + 3rem);
   top: calc(var(--rg-top) + 3rem);
-  transform: translate(var(--xx), var(--yy));
+  transform: translate(var(--rg-x), var(--rg-y));
 }
 
 [ data-use = sqr-44p ] pixel-square {

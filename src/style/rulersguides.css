@@ -33,9 +33,8 @@
 */
 .rg-overlay .ruler.h,
 .rg-overlay .ruler.v {
-  transform: translate(var(--xx), var(--yy));
-  /* left: var(--xx);
-  top: var(--yy); */
+  transform: translate(var(--rg-x), var(--rg-y));
+  /* Was: left: var(--xx); top: var(--yy); */
 }
 
 /* .guide {

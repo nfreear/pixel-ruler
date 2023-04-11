@@ -37,10 +37,20 @@ export class ArrowButtonKeyElement extends AppElement {
     return MATCH ? `${MATCH[1].toLowerCase()}Key` : DEF_MOD_KEY;
   }
 
+  set rulerPosition (COORD) {
+    this._coord = COORD;
+
+    this._root.dataset.rgX = COORD.x;
+    this._root.dataset.rgY = COORD.y;
+
+    this._root.style.setProperty('--rg-x', COORD.x + 'px');
+    this._root.style.setProperty('--rg-y', COORD.y + 'px');
+  }
+
+  get rulerPosition () { return this._coord; }
+
   connectedCallback () {
-    // this._ROOT = document.documentElement;
-    this._root.dataset.xx = 0;
-    this._root.dataset.yy = 0;
+    this.rulerPosition = { x: 0, y: 0 };
 
     this._attachLocalTemplate(TEMPLATE);
 
@@ -54,7 +64,6 @@ export class ArrowButtonKeyElement extends AppElement {
   }
 
   _keyUpHandler (ev) {
-    const ROOT = this._root;
     const MATCH = ev.key.match(/Arrow(Up|Down|Left|Right)/);
 
     if (MATCH) {
@@ -64,17 +73,13 @@ export class ArrowButtonKeyElement extends AppElement {
 
       const DIR = MATCH[1];
       const DELTA = { x: FAC * KX[DIR], y: FAC * KY[DIR] };
-      const COORD = {
-        x: parseInt(ROOT.dataset.xx) + DELTA.x,
-        y: parseInt(ROOT.dataset.yy) + DELTA.y
+
+      this.rulerPosition = {
+        x: this.rulerPosition.x + DELTA.x,
+        y: this.rulerPosition.y + DELTA.y
       };
-      ROOT.dataset.xx = COORD.x;
-      ROOT.dataset.yy = COORD.y;
 
-      ROOT.style.setProperty('--xx', COORD.x + 'px');
-      ROOT.style.setProperty('--yy', COORD.y + 'px');
-
-      console.debug('Arrow keyup:', COORD, DIR, ev.key, ev);
+      console.debug('Arrow keyup:', this.rulerPosition, DIR, ev.key, ev);
     } else {
       console.debug('Keyup:', ev.key, ev);
     }

@@ -25,8 +25,7 @@ export class ArrowButtonsElement extends ArrowKeyButtonElement {
   }
 
   connectedCallback () {
-    this._root.dataset.xx = 0;
-    this._root.dataset.yy = 0;
+    this.rulerPosition = { x: 0, y: 0 };
 
     this._attachLocalTemplate(TEMPLATE);
 
