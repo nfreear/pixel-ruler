@@ -10,37 +10,28 @@
   }
 }
 
-/* body .rg-overlay, */
-output {
+/* body .rg-overlay, output */
+#image-output {
   position: absolute;
   left: var(--rg-left);
   top: var(--rg-top);
 }
-
-/*! Was: Dynamically position the ruler!
-*/
-/* .rg-overlay .ruler.h,
-.rg-overlay .ruler.v {
-  left: var(--xx);
-  top: var(--yy);
-} */
 
 button,
 ::part(button),
 ::part(input) {
   font: inherit;
   padding: .37rem;
-  min-width: 1.85rem;
-  /* margin-right: .3rem; */
+  min-width: 2.1rem;
 }
 
-output {
+#image-output {
   border-radius: .05rem;
   outline: 2px solid red;
   outline-offset: 0;
 }
 
-output > div {
+#image-output > div {
   line-height: 1.6;
   margin: 4rem;
   max-width: 44rem;
@@ -48,22 +39,49 @@ output > div {
   z-index: 99;
 }
 
+@media screen and (max-width: 1050px) {
+  #image-output > div {
+    line-height: 1.5;
+    margin-right: .7rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+
 /*! Ensure the image is correctly sized and scaled.
  */
-output img {
+#image-output img {
   aspect-ratio: var(--img-width) / var(--img-height);
   height: var(--dev-height);
   width: auto; /* var(--dev-width); */
 }
 
-.X.i::after,
-.X.sep::after {
-  content: '·';
-  margin: 0 .3rem;
+.no-js nav li {
+  background: #eee;
+  border: 1px solid #aaa;
+  height: 1.3rem;
+  min-width: 5rem;
+  padding: .3rem;
+}
+.no-js nav li::after {
+  content: 'Loading';
+  font-size: smaller;
 }
 
-nav > i,
+.no-js-message {
+  background: #fee;
+  border: 2px solid #b00;
+  padding: .6rem;
+  text-align: center;
+}
+
 .js .no-js-message,
+[data-image-loaded] #image-output > div,
 [data-image-loaded] upload-image-button {
   display: none;
 }
@@ -86,13 +104,20 @@ nav {
   margin: .4rem 0;
 }
 
-nav > * {
-  margin-right: .25rem;
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: .3rem;
 }
 
 body {
   background-color: #fafafa;
-  color: #333;
+  color: #222;
   font-family: sans-serif;
   line-height: 1.1;
 }
@@ -141,6 +166,20 @@ screen-size-selector::part(input) {
 
 [ data-experiment ] settings-dialog-button {
   display: inline-block;
+}
+
+/* Accessibility.
+*/
+.visually-hidden,
+.sr-only,
+::part(sr-only) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 /* End. */

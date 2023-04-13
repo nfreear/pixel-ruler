@@ -8,29 +8,31 @@
 <link rel="stylesheet" href="style/app.css">
 <link rel="prefetch"   href="style/rulersguides.css">
 
-<main class="wrapper">
-  <nav aria-label="Controls">
-    <arrow-key-button key-multiplier="10"></arrow-key-button>
-    <arrow-buttons hidden></arrow-buttons>
+<nav aria-labelledby="navLabel">
+  <h2 id="navLabel" class="sr-only">Controls</h2>
+  <ul>
+    <li><arrow-key-button key-multiplier="10"></arrow-key-button>
+      <arrow-buttons hidden></arrow-buttons>
 
-    <paste-image-button></paste-image-button>
+    <li><paste-image-button></paste-image-button>
 
-    <upload-image-button></upload-image-button>
+    <li><upload-image-button></upload-image-button>
 
-    <i></i>
-    <screen-size-selector></screen-size-selector>
-    <my-local-storage key="screenSize" selector="screen-size-selector"></my-local-storage>
+    <li><screen-size-selector></screen-size-selector>
+      <my-local-storage key="screenSize" selector="screen-size-selector"></my-local-storage>
 
-    <settings-dialog-button hidden></settings-dialog-button>
+    <li><settings-dialog-button hidden></settings-dialog-button>
 
-    <i></i>
-    <span id="dim">&hellip;</span>
-  </nav>
+    <li><output id="dim">&hellip;</output>
+  </ul>
+</nav>
 
-  <output id="image">
+<main>
+  <div id="image-output">
     <div>
       <p class="no-js-message">
-        This website relies on Javascript. Sorry, you'll need an evergreen browser.
+        This website relies on Javascript. Sorry, you’ll need an
+        <a href="https://www.computerhope.com/issues/ch001388.htm">evergreen browser</a>.
       </p>
       <div class="placeholder">
         <h1> (Screenshot) Pixel Ruler<sup> alpha</sup> </h1>
@@ -62,7 +64,7 @@
         <p>It is a work-in-progress! <a href="https://github.com/nfreear/pixel-ruler">Feedback via GitHub</a>.</p>
       </div>
     </div>
-  </output>
+  </div>
 </main>
 
 <rulers-guides-v2></rulers-guides-v2>

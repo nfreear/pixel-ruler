@@ -11,10 +11,10 @@ const { KeyboardEvent } = window;
 const TEMPLATE = `
 <template>
   <span id="arrow-buttons">
-    <button part="button larr" value="Left"  aria-label="Left" >&larr;</button>
-    <button part="button rarr" value="Right" aria-label="Right">&rarr;</button>
-    <button part="button uarr" value="Up"    aria-label="Up"   >&uarr;</button>
-    <button part="button darr" value="Down"  aria-label="Down" >&darr;</button>
+    <button part="button" value="Left" ><i part="sr-only">Left</i>&larr;</button>
+    <button part="button" value="Right"><i part="sr-only">Right</i>&rarr;</button>
+    <button part="button" value="Up"   ><i part="sr-only">Up</i>  &uarr;</button>
+    <button part="button" value="Down" ><i part="sr-only">Down</i>&darr;</button>
   </span>
 </template>
 `;
@@ -32,11 +32,6 @@ export class ArrowButtonsElement extends ArrowKeyButtonElement {
     const BUTTONS = this.shadowRoot.querySelector('#arrow-buttons');
 
     BUTTONS.addEventListener('click', (ev) => this._arrowButtonsHandler(ev));
-
-    /* setTimeout(() => {
-      this._otherButton = document.querySelector('arrow-key-button');
-    },
-    50); */
   }
 
   _arrowButtonsHandler (ev) {

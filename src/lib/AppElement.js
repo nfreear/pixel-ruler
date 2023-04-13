@@ -16,8 +16,8 @@ export class AppElement extends MyElement {
   }
 
   _appendImage (imgElement) {
-    const output = document.querySelector('#image');
-    output.textContent = '';
+    const output = document.querySelector('#image-output');
+    // output.textContent = '';
     output.appendChild(imgElement);
 
     this._root.dataset.imageLoaded = true;
