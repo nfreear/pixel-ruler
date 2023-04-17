@@ -6,10 +6,12 @@
 
 import AppElement from './AppElement.js';
 
+const { PointerEvent } = window;
+
 const TEMPLATE = `
 <template>
-  <label for="file"><slot>Upload screenshot</slot></label>
-  <input id="file" part="input" type="file" accept="image/jpeg, image/png, image/jpg">
+  <button part="button"><slot>Upload image</slot></button>
+  <input type="file" accept="image/jpeg, image/png, image/jpg" hidden>
 </template>
 `;
 
@@ -21,8 +23,10 @@ export class UploadImageButtonElement extends AppElement {
   connectedCallback () {
     this._attachLocalTemplate(TEMPLATE);
 
+    const BUTTON = this.shadowRoot.querySelector('button');
     const FILE = this.shadowRoot.querySelector('input[ type = file ]');
 
+    BUTTON.addEventListener('click', (ev) => this._clickDispatch(ev, FILE));
     FILE.addEventListener('change', (ev) => this._changeHandler(ev));
   }
 
@@ -42,6 +46,14 @@ export class UploadImageButtonElement extends AppElement {
     this._appendImage(IMG);
 
     console.debug('File change:', files, ev);
+  }
+
+  _clickDispatch (ev, fileElem) {
+    const { bubbles, pointerId, pointerType } = ev;
+    const EVENT = new PointerEvent('click', { bubbles, pointerId, pointerType });
+    EVENT._origEvent = ev;
+    fileElem.dispatchEvent(EVENT);
+    console.debug('upload-image-button - Click:', EVENT, fileElem);
   }
 }
 

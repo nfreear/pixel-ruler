@@ -2,11 +2,13 @@
 :root {
   --rg-top: 3.6rem;
   --rg-left: .4rem;
+  --bg-color: #fcfcfc;
+  --text-color: #222;
 }
 
 @media screen and (max-width: 1050px) {
   :root {
-    --rg-top: 7rem;
+    --rg-top: 7.8rem;
   }
 }
 
@@ -21,8 +23,9 @@ button,
 ::part(button),
 ::part(input) {
   font: inherit;
-  padding: .37rem;
-  min-width: 2.1rem;
+  padding: .25rem;
+  min-height: 2.3rem;
+  min-width: 2.2rem;
 }
 
 #image-output {
@@ -112,12 +115,12 @@ nav ul {
 
 nav li {
   display: inline-block;
-  margin-right: .3rem;
+  margin-right: .5rem;
 }
 
 body {
-  background-color: #fafafa;
-  color: #222;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: sans-serif;
   line-height: 1.1;
 }
@@ -162,6 +165,13 @@ screen-size-selector::part(input) {
 [ data-use = sqr-44p ] pixel-square {
   height: 44px;
   width: 44px;
+}
+
+[ data-move = mouse ] arrow-key-button {
+  display: none;
+}
+[ data-move = mouse ] arrow-buttons {
+  display: inline-block;
 }
 
 [ data-experiment ] settings-dialog-button {

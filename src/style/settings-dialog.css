@@ -16,9 +16,11 @@ button svg {
 }
 
 dialog {
+  background-color: var(--bg-color);
   border: 2px solid navy;
   border-radius: .2rem;
-  max-width: 40rem;
+  color: inherit;
+  max-width: 42rem;
 }
 
 dialog button {
@@ -26,6 +28,19 @@ dialog button {
   padding: .37rem 2rem;
 }
 
-fieldset {
+dialog fieldset {
+  border: 1px solid #999;
+  line-height: 1.7rem;
   margin: 2rem 0;
+}
+
+dialog label {
+  margin-right: .4rem;
+  padding: .4rem 0;
+}
+
+dialog [ type = radio ] {
+  height: 1rem;
+  width: 1rem;
+  vertical-align: -.1rem;
 }

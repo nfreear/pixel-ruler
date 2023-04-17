@@ -16,6 +16,11 @@ const TEMPLATE = `
   <dialog aria-labelledby="dlgLabel">
     <form method="dialog">
       <h2 id="dlgLabel">Settings</h2>
+      <fieldset id="fs-move">
+        <legend>Move the ruler with a keyboard or mouse?</legend>
+        <label><input type="radio" name="m" value="keyboard"> Keyboard</label>
+        <label><input type="radio" name="m" value="mouse"> Mouse / touch buttons</label>
+      </fieldset>
       <fieldset id="fs-use">
         <legend>Use a ruler or a square?</legend>
         <label><input type="radio" name="u" value="ruler"> Rulers</label>
@@ -46,10 +51,13 @@ export class SettingsDialogButtonElement extends AppElement {
     const BUTTON = this.shadowRoot.querySelector('.dialog-open-button'); // [part *= dlgOpen];
     const DIALOG = this.shadowRoot.querySelector('dialog');
     const USE = this.shadowRoot.querySelector('#fs-use');
+    const MOVE = this.shadowRoot.querySelector('#fs-move');
 
     BUTTON.addEventListener('click', (ev) => DIALOG.showModal());
 
     USE.addEventListener('change', (ev) => this._useChangeHandler(ev), false);
+
+    MOVE.addEventListener('change', (ev) => this._moveChangeHandler(ev));
 
     console.debug('settings-dialog-button:', this);
   }
@@ -62,7 +70,15 @@ export class SettingsDialogButtonElement extends AppElement {
 
     this._root.dataset.use = TARGET.value; // Was: 'mode'.
 
-    console.debug('Settings change - use:', PHASE, TARGET, C_TARGET, ACT, ev);
+    console.debug('Settings change - use:', TARGET.value, TARGET, PHASE, C_TARGET, ACT, ev);
+  }
+
+  _moveChangeHandler (ev) {
+    const TARGET = ev.target;
+
+    this._root.dataset.move = TARGET.value;
+
+    console.debug('Settings change - move how?', TARGET.value, TARGET, ev);
   }
 }
 
