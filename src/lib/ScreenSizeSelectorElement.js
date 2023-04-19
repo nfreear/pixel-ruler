@@ -62,15 +62,17 @@ export class ScreenSizeSelectorElement extends AppElement {
     return new RegExp(`(.+) [-${ND}${MD}/] (\\d{3})${SP}[x×]${SP}(\\d{3})`);
   }
 
+  get events () {
+    return [{ sel: '#dev', name: 'input', fn: '_inputHandler' }];
+  }
+
   connectedCallback () {
     this._attachLocalTemplate(TEMPLATE);
+    this._addEventHandlers();
 
-    const selectElem = this.shadowRoot.querySelector('#dev');
-    this._selectEl = selectElem;
+    const selectElem = this._selectEl = this.shadowRoot.querySelector('#dev');
 
     this._sortedSizes.forEach((it) => selectElem.appendChild(this.option(it)));
-
-    selectElem.addEventListener('input', ev => this._inputHandler(ev));
 
     console.debug('screen-size-selector:', selectElem.type);
   }

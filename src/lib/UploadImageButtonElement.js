@@ -20,14 +20,18 @@ export class UploadImageButtonElement extends AppElement {
     return 'upload-image-button';
   }
 
+  get events () {
+    return [
+      { sel: 'button', name: 'click', fn: '_clickDispatch' },
+      { sel: 'input[type = file]', name: 'change', fn: '_changeHandler' }
+    ];
+  }
+
   connectedCallback () {
     this._attachLocalTemplate(TEMPLATE);
+    this._addEventHandlers();
 
-    const BUTTON = this.shadowRoot.querySelector('button');
-    const FILE = this.shadowRoot.querySelector('input[ type = file ]');
-
-    BUTTON.addEventListener('click', (ev) => this._clickDispatch(ev, FILE));
-    FILE.addEventListener('change', (ev) => this._changeHandler(ev));
+    this._fileElem = this.shadowRoot.querySelector('input[ type = file ]');
   }
 
   /**
@@ -48,12 +52,12 @@ export class UploadImageButtonElement extends AppElement {
     console.debug('File change:', files, ev);
   }
 
-  _clickDispatch (ev, fileElem) {
+  _clickDispatch (ev) {
     const { bubbles, pointerId, pointerType } = ev;
     const EVENT = new PointerEvent('click', { bubbles, pointerId, pointerType });
     EVENT._origEvent = ev;
-    fileElem.dispatchEvent(EVENT);
-    console.debug('upload-image-button - Click:', EVENT, fileElem);
+    this._fileElem.dispatchEvent(EVENT);
+    console.debug('upload-image-button - Click:', EVENT, this._fileElem);
   }
 }
 

@@ -49,16 +49,19 @@ export class ArrowButtonKeyElement extends AppElement {
 
   get rulerPosition () { return this._coord; }
 
+  get events () {
+    return [
+      { sel: 'button', name: 'keyup', fn: '_keyUpHandler' },
+      { sel: 'button', name: 'keydown', fn: '_keyDownHandler' },
+      { sel: 'button', name: 'click', fn: '_clickHandler' }
+    ];
+  }
+
   connectedCallback () {
     this.rulerPosition = { x: 0, y: 0 };
 
     this._attachLocalTemplate(TEMPLATE);
-
-    const BUTTON = this.shadowRoot.querySelector('button');
-
-    BUTTON.addEventListener('keyup', (ev) => this._keyUpHandler(ev));
-    BUTTON.addEventListener('keydown', (ev) => this._keyDownHandler(ev), false);
-    BUTTON.addEventListener('click', ev => alert(HOWTO_TEXT));
+    this._addEventHandlers();
 
     console.debug('arrow-key-button:', this.modifierKey, this.keyMultiplier, this);
   }
@@ -93,6 +96,8 @@ export class ArrowButtonKeyElement extends AppElement {
       // Accessibility: do everything else on "keyup"!
     }
   }
+
+  _clickHandler (ev) { alert(HOWTO_TEXT); }
 }
 
 ArrowButtonKeyElement.define();

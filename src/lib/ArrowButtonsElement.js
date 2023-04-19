@@ -24,14 +24,15 @@ export class ArrowButtonsElement extends ArrowKeyButtonElement {
     return 'arrow-buttons';
   }
 
+  get events () {
+    return [{ sel: '#arrow-buttons', name: 'click', fn: '_arrowButtonsHandler' }];
+  }
+
   connectedCallback () {
     this.rulerPosition = { x: 0, y: 0 };
 
     this._attachLocalTemplate(TEMPLATE);
-
-    const BUTTONS = this.shadowRoot.querySelector('#arrow-buttons');
-
-    BUTTONS.addEventListener('click', (ev) => this._arrowButtonsHandler(ev));
+    this._addEventHandlers();
   }
 
   _arrowButtonsHandler (ev) {

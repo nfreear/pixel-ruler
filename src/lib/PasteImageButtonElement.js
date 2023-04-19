@@ -17,12 +17,13 @@ export class PasteImageButtonElement extends AppElement {
     return 'paste-image-button';
   }
 
+  get events () {
+    return [{ sel: 'button', name: 'click', fn: '_pasteImage' }];
+  }
+
   connectedCallback () {
     this._attachLocalTemplate(TEMPLATE);
-
-    const BUTTON = this.shadowRoot.querySelector('button');
-
-    BUTTON.addEventListener('click', ev => this._pasteImage(ev));
+    this._addEventHandlers();
   }
 
   async _pasteImage (ev) {
