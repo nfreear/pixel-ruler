@@ -12,9 +12,9 @@ const TEMPLATE = `
 <template>
   <span id="arrow-buttons">
     <button part="button" value="Left" ><i part="sr-only">Left</i>&larr;</button>
-    <button part="button" value="Right"><i part="sr-only">Right</i>&rarr;</button>
     <button part="button" value="Up"   ><i part="sr-only">Up</i>  &uarr;</button>
     <button part="button" value="Down" ><i part="sr-only">Down</i>&darr;</button>
+    <button part="button" value="Right"><i part="sr-only">Right</i>&rarr;</button>
   </span>
 </template>
 `;

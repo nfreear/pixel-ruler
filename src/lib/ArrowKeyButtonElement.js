@@ -9,21 +9,22 @@ import AppElement from './AppElement.js';
 const { alert } = window;
 const DEF_MOD_KEY = 'shiftKey';
 const DEF_KEY_MULTI = 10;
-const KX = { Up: 0, Down: 0, Left: -1, Right: 1 };
-const KY = { Up: -1, Down: 1, Left: 0, Right: 0 };
-
-const HOWTO_TEXT = `Use the arrow keys to move the rulers — when focussed on this button.
-
-Try Shift + arrow key to move in bigger increments!`;
-const TEMPLATE = `
-<template>
-  <button part="button"><i part="sr-only"><slot>Move the ruler with the arrow keys</slot></i>⤭</button>
-</template>
-`;
 
 export class ArrowButtonKeyElement extends AppElement {
   static getTag () {
     return 'arrow-key-button';
+  }
+
+  get template () {
+    return `
+    <template>
+      <button part="button"><i part="sr-only"><slot>Move the ruler with the arrow keys</slot></i>⤭</button>
+    </template>`;
+  }
+
+  get _howtoText () {
+    return `Use the arrow keys to move the rulers — when focussed on this button.
+\nTry Shift + arrow key to move in bigger increments!`;
   }
 
   get keyMultiplier () {
@@ -52,18 +53,25 @@ export class ArrowButtonKeyElement extends AppElement {
   get events () {
     return [
       { sel: 'button', name: 'keyup', fn: '_keyUpHandler' },
-      { sel: 'button', name: 'keydown', fn: '_keyDownHandler' },
-      { sel: 'button', name: 'click', fn: '_clickHandler' }
+      { sel: 'button', name: 'keydown', fn: '_noScrolling' }, // Was: '_keyDownHandler'
+      { sel: 'button', name: 'click', fn: '_clickMessage' } // '_clickHandler'
     ];
   }
 
   connectedCallback () {
     this.rulerPosition = { x: 0, y: 0 };
 
-    this._attachLocalTemplate(TEMPLATE);
+    this._attachLocalTemplate(this.template);
     this._addEventHandlers();
 
     console.debug('arrow-key-button:', this.modifierKey, this.keyMultiplier, this);
+  }
+
+  get _keyMoves () {
+    return {
+      x: { Up: 0, Down: 0, Left: -1, Right: 1 },
+      y: { Up: -1, Down: 1, Left: 0, Right: 0 }
+    };
   }
 
   _keyUpHandler (ev) {
@@ -75,7 +83,8 @@ export class ArrowButtonKeyElement extends AppElement {
       const FAC = ev[this.modifierKey] ? this.keyMultiplier : 1;
 
       const DIR = MATCH[1];
-      const DELTA = { x: FAC * KX[DIR], y: FAC * KY[DIR] };
+      const KM = this._keyMoves;
+      const DELTA = { x: FAC * KM.x[DIR], y: FAC * KM.y[DIR] };
 
       this.rulerPosition = {
         x: this.rulerPosition.x + DELTA.x,
@@ -90,14 +99,14 @@ export class ArrowButtonKeyElement extends AppElement {
 
   /** Prevent the browser window scrolling - just when focussed on this button.
    */
-  _keyDownHandler (ev) {
+  _noScrolling (ev) {
     if ([37, 38, 39, 40].indexOf(ev.keyCode) > -1) {
       ev.preventDefault();
       // Accessibility: do everything else on "keyup"!
     }
   }
 
-  _clickHandler (ev) { alert(HOWTO_TEXT); }
+  _clickMessage (ev) { alert(this._howtoText); }
 }
 
 ArrowButtonKeyElement.define();

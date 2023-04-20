@@ -19,6 +19,8 @@ This tool is being developed to test for the new [Success Criterion 2.5.8 Target
 
 It is a work-in-progress! [Feedback welcome][issues]!
 
+Built using [RulersGuides.js][rg] by Mark Rolich, and [My Elements][el].
+
 [Prototype CodePen][pen].
 
 [issues]: https://github.com/nfreear/pixel-ruler/issues
@@ -28,3 +30,5 @@ It is a work-in-progress! [Feedback welcome][issues]!
 [pen]: https://codepen.io/nfreear/full/bGxyEdZ "Prototype CodePen"
 [pen-ss]: https://codepen.io/nfreear/full/JjaqbVQ "Button size CodePen"
 [tsm]: https://www.w3.org/TR/WCAG22/#target-size-minimum
+[el]: https://github.com/nfreear/elements "MIT License"
+[rg]: https://github.com/mark-rolich/RulersGuides.js "MIT License"
