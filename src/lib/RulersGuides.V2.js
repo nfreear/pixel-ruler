@@ -80,13 +80,18 @@ export class RulersGuidesElement extends AppElement {
     const wrapper = document.createElement('div');
     // Was: gInfoBlockWrapper = wrapper.cloneNode(false);
 
-    wrapper.setAttribute('role', 'region');
-    wrapper.setAttribute('aria-label', 'Rulers');
+    wrapper.role = 'region';
+    wrapper.ariaLabel = 'Rulers'; // Was: .setAttribute('aria-label', 'Rulers');
     wrapper.classList.add('rg-overlay'); // Was: .className = 'rg-overlay';
     // gInfoBlockWrapper.className = 'info-block-wrapper';
 
     // wrapper.style.width = (size[0]) + 'px';
     // wrapper.style.height = (size[1]) + 'px';
+
+    hRuler.role = 'img';
+    hRuler.ariaLabel = 'Horizontal ruler, in pixels';
+    vRuler.role = 'img';
+    vRuler.ariaLabel = 'Vertical ruler, in pixels';
 
     wrapper.appendChild(hRuler);
     wrapper.appendChild(vRuler);
