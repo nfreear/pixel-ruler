@@ -3,9 +3,9 @@
   "name": "screenshot-pixel-ruler",
   "type": "module",
   "scripts": {
-    "start": "npx servor src",
-    "fix": "semistandard --fix",
-    "test": "semistandard"
+    "start": "npx servor",
+    "fix": "semistandard --fix src",
+    "test": "semistandard src"
   },
   "devDependencies": {
     "semistandard": "^16.0.1",

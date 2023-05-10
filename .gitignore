@@ -1,3 +1,8 @@
 
+# Symbolic links.
+elements
+pixel-ruler
+
 *BAK*
 node_modules
+.DS_Store
