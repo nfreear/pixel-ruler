@@ -16,6 +16,7 @@
     "url": "https://github.com/nfreear/pixel-ruler.git"
   },
   "author": "Nick Freear {@nfreear}",
+  "license": "MIT",
   "semistandard": {
     "ignore": [
       "RulersGuides.js"
