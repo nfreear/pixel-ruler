@@ -1,5 +1,6 @@
 /**
- *
+ * Pixel Ruler.
+ * @license MIT.
  * @author Nick Freear, 30-March-2023.
  *
  * @see https://codepen.io/nfreear/pen/bGxyEdZ
