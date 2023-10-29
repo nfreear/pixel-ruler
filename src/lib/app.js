@@ -17,11 +17,18 @@ import './UploadImageButtonElement.js';
 import '../../elements/src/components/MyLocalStorageElement.js';
 import '../../elements/src/components/MySiteCounterElement.js';
 
-document.documentElement.classList.remove('no-js');
-document.documentElement.classList.add('js');
+const ROOT = document.documentElement;
+
+ROOT.classList.remove('no-js');
+ROOT.classList.add('js');
 
 if (/experiment=/.test(window.location.search)) {
-  document.documentElement.dataset.experiment = true;
+  ROOT.dataset.experiment = true;
+}
+
+if (/highlight=/.test(window.location.search)) {
+  ROOT.dataset.highlight = true;
+  document.querySelector('settings-dialog-button').focus();
 }
 
 /**

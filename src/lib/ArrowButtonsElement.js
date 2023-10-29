@@ -8,13 +8,20 @@ import ArrowKeyButtonElement from './ArrowKeyButtonElement.js';
 
 const { KeyboardEvent } = window;
 
+/** @see https://symbl.cc/en/collections/arrow-symbols/
+*/
+const LARR = '&#11013;'; // '&#x2B05;' // '&larr;'
+const UARR = '&#11014;';
+const DARR = '&#11015;';
+const RARR = '&#10152;'; // '&#10145;'
+
 const TEMPLATE = `
 <template>
   <span id="arrow-buttons">
-    <button part="button" value="Left" ><i part="sr-only">Left</i>&larr;</button>
-    <button part="button" value="Up"   ><i part="sr-only">Up</i>  &uarr;</button>
-    <button part="button" value="Down" ><i part="sr-only">Down</i>&darr;</button>
-    <button part="button" value="Right"><i part="sr-only">Right</i>&rarr;</button>
+    <button part="button" value="Left" ><i part="sr-only">Left</i>${LARR}</button>
+    <button part="button" value="Up"   ><i part="sr-only">Up</i>  ${UARR}</button>
+    <button part="button" value="Down" ><i part="sr-only">Down</i>${DARR}</button>
+    <button part="button" value="Right"><i part="sr-only">Right</i>${RARR}</button>
   </span>
 </template>
 `;

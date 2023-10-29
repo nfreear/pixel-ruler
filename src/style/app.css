@@ -176,6 +176,10 @@ arrow-buttons::part(button) {
   width: 44px;
 }
 
+[ data-use *= circle ] pixel-square {
+  border-radius: 50%;
+}
+
 [ data-move = mouse ] arrow-key-button {
   display: none;
 }
@@ -185,6 +189,27 @@ arrow-buttons::part(button) {
 
 /*[ data-experiment ]*/ settings-dialog-button {
   display: inline-block;
+}
+
+[ data-highlight ] settings-dialog-button::part(button) {
+  box-shadow: 0 0 .2rem .3rem darkorange;
+  transition: all .6s;
+}
+[ data-highlight ] settings-dialog-button::part(button):hover {
+  box-shadow: 0 0 .3rem .5rem darkorange;
+}
+
+[ data-highlight ] settings-dialog-button:after {
+  content: '↖'; /* '↩'; */
+  color: darkred;
+  display: inline-block;
+  font-size: 3rem;
+  line-height: .4;
+  transform: translate(-.1rem, 2.4rem);
+  transition: all .6s;
+}
+[ data-highlight ] settings-dialog-button:hover:after {
+  transform: translate(0, 2.6rem);
 }
 
 /* Accessibility.

@@ -2,7 +2,6 @@
 # https://github.com/actions/starter-workflows/blob/main/ci/node.js.yml
 
 name: Pages Status
-# name: Node.js CI
 
 on:
   push:
@@ -46,9 +45,6 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
-    # Ignore non-zero exit codes for 'outdated' and 'audit'.
-    - run: npm outdated || true
-    - run: npm audit || true
     - name: Setup Pages
       uses: actions/configure-pages@v2
     - name: Upload artifact

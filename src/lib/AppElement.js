@@ -15,6 +15,14 @@ export class AppElement extends MyElement {
     return document.querySelector('#dim');
   }
 
+  get _liveRegion () {
+    return document.querySelector('#live-region');
+  }
+
+  _postLiveMessage (messageStr) {
+    this._liveRegion.textContent = messageStr;
+  }
+
   _appendImage (imgElement) {
     const output = document.querySelector('#image-output');
     // output.textContent = '';

@@ -15,6 +15,7 @@ export class ArrowButtonKeyElement extends AppElement {
     return 'arrow-key-button';
   }
 
+  /** @see https://fsymbols.com/signs/arrow/ */
   get template () {
     return `
     <template>

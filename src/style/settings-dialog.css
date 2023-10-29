@@ -20,7 +20,9 @@ dialog {
   border: 2px solid navy;
   border-radius: .2rem;
   color: inherit;
-  max-width: 42rem;
+  max-width: 38rem;
+  X-min-height: 23rem;
+  overflow-y: scroll;
 }
 
 dialog button {
@@ -35,7 +37,7 @@ dialog fieldset {
 }
 
 dialog label {
-  margin-right: .4rem;
+  margin-right: .5rem;
   padding: .4rem 0;
 }
 
